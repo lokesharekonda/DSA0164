@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {0, 1, 2, 3, 5, 6, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int missing = -1;
+    int i = 0;
+    while (i < size) {
+        if (arr[i] != i) {
+            missing = i;
+            break;
+        }
+        i++;
+    }
+    if (missing == -1) {
+        missing = size;
+    }
+    cout << "The smallest missing element is " << missing << "." << endl;
+    return 0;
+}
