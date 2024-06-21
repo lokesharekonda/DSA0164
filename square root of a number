@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int num, sqrt = 0;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (num < 0) {
+        cout << "Invalid input, negative numbers do not have real square roots." << endl;
+        return 1;
+    } else if (num == 0 || num == 1) {
+        sqrt = num;
+    } else {
+        for (int i = 1; i <= num; ++i) {
+            if (i * i == num) {
+                sqrt = i;
+                break;
+            } else if (i * i > num) {
+                sqrt = -1; 
+                break;
+            }
+        }
+    }
+    if (sqrt == -1) {
+        cout << "The number " << num << " is not a perfect square." << endl;
+    } else {
+        cout << "The square root of " << num << " is " << sqrt << "." << endl;
+    }
+    return 0;
+}
