@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+void displayInfo(const string& name, int age = 18, const string& country = "USA") {
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+    cout << "Country: " << country << endl;
+}
+int main() {
+    displayInfo("Alice", 25, "Canada");
+    displayInfo("Bob", 30);
+    displayInfo("Charlie");
+    return 0;
+}
