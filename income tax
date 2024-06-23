@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    double taxableIncome;
+    double tax;
+
+public:
+    // Constructor
+    Employee(double income) : taxableIncome(income), tax(0) {}
+
+    // Function to calculate tax based on income
+    void calculateTax() {
+        if (taxableIncome <= 60000) {
+            tax = 0;
+        } else if (taxableIncome > 60000 && taxableIncome <= 150000) {
+            tax = taxableIncome * 0.05;
+        } else if (taxableIncome > 150000 && taxableIncome <= 500000) {
+            tax = taxableIncome * 0.1;
+        } else {
+            tax = taxableIncome * 0.15;
+        }
+    }
+
+    // Function to display tax details
+    void displayTax() {
+        cout << "Taxable Income: $" << taxableIncome << endl;
+        cout << "Income Tax: $" << tax << endl;
+    }
+};
+
+int main() {
+    double income;
+
+    // Input taxable income from user
+    cout << "Enter taxable income: $";
+    cin >> income;
+
+    // Create Employee object
+    Employee emp(income);
+
+    // Calculate and display tax
+    emp.calculateTax();
+    emp.displayTax();
+
+    return 0;
+}
