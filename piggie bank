@@ -1,0 +1,22 @@
+#include <iostream>
+class AddAmount {
+private:
+    int amount;
+public:
+    AddAmount() {
+        amount = 50;
+    }
+    AddAmount(int addedAmount) {
+        amount = 50 + addedAmount;
+    }
+    void displayAmount() const {
+        std::cout << "Final amount in the Piggie Bank: $" << amount << std::endl;
+    }
+};
+int main() {
+    AddAmount piggieBank1; 
+    AddAmount piggieBank2(25); 
+    piggieBank1.displayAmount(); 
+    piggieBank2.displayAmount(); 
+    return 0;
+}
