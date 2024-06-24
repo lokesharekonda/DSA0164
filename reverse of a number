@@ -1,0 +1,26 @@
+#include <iostream>
+class NumberReversal {
+private:
+    long long intNumber; 
+public:
+    NumberReversal(long long num) {
+        intNumber = num;
+    }
+    long long reverseInteger() {
+        long long reversedNum = 0;
+        long long originalNum = intNumber;
+        while (originalNum != 0) {
+            reversedNum = reversedNum * 10 + originalNum % 10;
+            originalNum /= 10;
+        }
+        return reversedNum;
+    }
+};
+int main() {
+    long long intNum;
+    std::cout << "Enter an integer number: ";
+    std::cin >> intNum;
+    NumberReversal numReversal(intNum);
+    std::cout << "Reverse of " << intNum << " is: " << numReversal.reverseInteger() << std::endl;
+    return 0;
+}
