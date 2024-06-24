@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath> 
+class VolumeCalculator {
+private:
+    double cubeSide;
+    double cylinderRadius;
+    double cylinderHeight;
+public:
+    VolumeCalculator(double side) {
+        cubeSide = side;
+        cylinderRadius = 0.0;
+        cylinderHeight = 0.0;
+    }
+    VolumeCalculator(double radius, double height, bool isCylinder) {
+        cubeSide = 0.0;
+        cylinderRadius = radius;
+        cylinderHeight = height;
+    }
+    double calculateCubeVolume() {
+        return std::pow(cubeSide, 3);
+    }
+    double calculateCylinderVolume() {
+        return M_PI * std::pow(cylinderRadius, 2) * cylinderHeight;
+    }
+};
+int main() {
+    double side, radius, height;
+    std::cout << "Enter the side length of the cube: ";
+    std::cin >> side;
+    std::cout << "Enter the radius and height of the cylinder: ";
+    std::cin >> radius >> height;
+    VolumeCalculator cubeVolume(side);
+    VolumeCalculator cylinderVolume(radius, height, true);
+    std::cout << "Volume of the cube is: " << cubeVolume.calculateCubeVolume() << std::endl;
+    std::cout << "Volume of the cylinder is: " << cylinderVolume.calculateCylinderVolume() << std::endl;
+    return 0;
+}
