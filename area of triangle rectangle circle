@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath> 
+class AreaCalculator {
+private:
+    double circleRadius;
+    double rectangleLength;
+    double rectangleWidth;
+    double triangleBase;
+    double triangleHeight;
+public:
+    AreaCalculator(double radius) {
+        circleRadius = radius;
+        rectangleLength = 0.0;
+        rectangleWidth = 0.0;
+        triangleBase = 0.0;
+        triangleHeight = 0.0;
+    }
+    AreaCalculator(double length, double width) {
+        circleRadius = 0.0;
+        rectangleLength = length;
+        rectangleWidth = width;
+        triangleBase = 0.0;
+        triangleHeight = 0.0;
+    }
+    AreaCalculator(double base, double height, bool isTriangle) {
+        circleRadius = 0.0;
+        rectangleLength = 0.0;
+        rectangleWidth = 0.0;
+        triangleBase = base;
+        triangleHeight = height;
+    }
+    double calculateCircleArea() {
+        return M_PI * circleRadius * circleRadius;
+    }
+    double calculateRectangleArea() {
+        return rectangleLength * rectangleWidth;
+    }
+    double calculateTriangleArea() {
+        return 0.5 * triangleBase * triangleHeight;
+    }
+};
+int main() {
+    double radius, length, width, base, height;
+    std::cout << "Enter the radius of the circle: ";
+    std::cin >> radius;
+    std::cout << "Enter the length and width of the rectangle: ";
+    std::cin >> length >> width;
+    std::cout << "Enter the base and height of the triangle: ";
+    std::cin >> base >> height;
+    AreaCalculator circleArea(radius);
+    AreaCalculator rectangleArea(length, width);
+    AreaCalculator triangleArea(base, height, true)
+    std::cout << "Area of the circle is: " << circleArea.calculateCircleArea() << std::endl;
+    std::cout << "Area of the rectangle is: " << rectangleArea.calculateRectangleArea() << std::endl;
+    std::cout << "Area of the triangle is: " << triangleArea.calculateTriangleArea() << std::endl;
+    return 0;
+}
