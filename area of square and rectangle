@@ -1,0 +1,21 @@
+#include <iostream>
+class Shape {
+public:
+    void printArea(double side) {
+        double area = side * side;
+        std::cout << "Area of the square: " << area << std::endl;
+    }
+    void printArea(double length, double breadth) {
+        double area = length * breadth;
+        std::cout << "Area of the rectangle: " << area << std::endl;
+    }
+};
+int main() {
+    Shape shape;
+    double squareSide = 5.0;
+    shape.printArea(squareSide);
+    double rectangleLength = 10.0;
+    double rectangleBreadth = 5.0;
+    shape.printArea(rectangleLength, rectangleBreadth);
+    return 0;
+}
