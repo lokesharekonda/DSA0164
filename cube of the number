@@ -1,0 +1,24 @@
+#include <iostream>
+class CubeCalculator {
+private:
+    int maxNumber;
+public:
+    CubeCalculator(int max) : maxNumber(max) {}
+    void displayCubes() {
+        std::cout << "Cubes of numbers up to " << maxNumber << " are:\n";
+        for (int i = 1; i <= maxNumber; ++i) {
+            std::cout << "Cube of " << i << " is: " << i * i * i << std::endl;
+        }
+    }
+    ~CubeCalculator() {
+        std::cout << "Destructor called. Object destroyed." << std::endl;
+    }
+};
+int main() {
+    int n;
+    std::cout << "Enter the maximum number to calculate cubes up to: ";
+    std::cin >> n;
+    CubeCalculator calculator(n);
+    calculator.displayCubes();
+    return 0;
+}
