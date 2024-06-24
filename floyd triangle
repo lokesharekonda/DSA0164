@@ -1,0 +1,31 @@
+#include <iostream>
+class FloydTriangle {
+private:
+    int numRows;
+public:
+    FloydTriangle(int rows) {
+        numRows = rows;
+    }
+    ~FloydTriangle() {
+        std::cout << "Destructor called. FloydTriangle object destroyed." << std::endl;
+    }
+    void printTriangle() {
+        int number = 1;
+        for (int i = 1; i <= numRows; ++i) {
+            for (int j = 1; j <= i; ++j) {
+                std::cout << number << " ";
+                ++number;
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+int main() {
+    int rows;
+    std::cout << "Enter number of rows for Floyd's Triangle: ";
+    std::cin >> rows;
+    FloydTriangle triangle(rows);
+    std::cout << "Printing Floyd's Triangle:" << std::endl;
+    triangle.printTriangle();
+    return 0;
+}
