@@ -1,0 +1,18 @@
+#include <iostream>
+class MyClass {
+private:
+    int num;
+public:
+    MyClass(int n);
+    void displayNum() {
+        std::cout << "Value of num: " << num << std::endl;
+    }
+};
+MyClass::MyClass(int n) {
+    num = n;
+}
+int main() {
+    MyClass obj(42);
+    obj.displayNum();
+    return 0;
+}
