@@ -1,0 +1,38 @@
+#include <iostream>
+class SeriesSum {
+private:
+    int start;
+    int end;
+    int step;
+public:
+    SeriesSum() {
+        start = 0;
+        end = 0;
+        step = 1;
+    }
+    SeriesSum(int s, int e, int st) {
+        start = s;
+        end = e;
+        step = st;
+    }
+    int calculateSum() {
+        int sum = 0;
+        for (int i = start; i <= end; i += step) {
+            sum += i;
+        }
+        return sum;
+    }
+};
+int main() {
+    int start, end, step;
+    std::cout << "Enter start of the series: ";
+    std::cin >> start;
+    std::cout << "Enter end of the series: ";
+    std::cin >> end;
+    std::cout << "Enter step of the series: ";
+    std::cin >> step;
+    SeriesSum series(start, end, step);
+    int sum = series.calculateSum();
+    std::cout << "Sum of the series is: " << sum << std::endl;
+    return 0;
+}
