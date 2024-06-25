@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+class Person {
+protected:
+    std::string name;
+    int age;
+public:
+    Person(const std::string &name, int age) : name(name), age(age) {}
+    void displayPersonInfo() const {
+        std::cout << "Name: " << name << "\nAge: " << age << std::endl;
+    }
+};
+class Employee {
+protected:
+    int employeeID;
+    std::string department;
+public:
+    Employee(int employeeID, const std::string &department) : employeeID(employeeID), department(department) {}
+    void displayEmployeeInfo() const {
+        std::cout << "Employee ID: " << employeeID << "\nDepartment: " << department << std::endl;
+    }
+};
+class Manager : public Person, public Employee {
+private:
+    int numOfTeams;
+public:
+    Manager(const std::string &name, int age, int employeeID, const std::string &department, int numOfTeams)
+        : Person(name, age), Employee(employeeID, department), numOfTeams(numOfTeams) {}
+    void displayManagerInfo() const {
+        displayPersonInfo();
+        displayEmployeeInfo();
+        std::cout << "Number of Teams: " << numOfTeams << std::endl;
+    }
+};
+int main() {
+    Manager manager("Alice Smith", 35, 10123, "HR", 5);
+    std::cout << "Manager's Information:" << std::endl;
+    manager.displayManagerInfo();
+    return 0;
+}
