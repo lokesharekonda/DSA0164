@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath> 
+class Shape {
+public:
+    virtual void calculateArea() = 0;
+};
+class Circle : public Shape {
+protected:
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    void calculateArea() override {
+        double area = M_PI * radius * radius;
+        std::cout << "Area of Circle: " << area << std::endl;
+    }
+};
+class Rectangle : public Shape {
+protected:
+    double length;
+    double breadth;
+public:
+    Rectangle(double l, double b) : length(l), breadth(b) {}
+    void calculateArea() override {
+        double area = length * breadth;
+        std::cout << "Area of Rectangle: " << area << std::endl;
+    }
+};
+class Cylinder : public Rectangle {
+private:
+    double height;
+public:
+    Cylinder(double r, double h) : Rectangle(r, r), height(h) {}
+    void calculateVolume() {
+        double volume = M_PI * length * length * height; 
+        std::cout << "Volume of Cylinder: " << volume << std::endl;
+    }
+};
+int main() {
+    Circle circle(5.0);
+    circle.calculateArea();
+    Rectangle rectangle(4.0, 6.0);
+    rectangle.calculateArea();
+    Cylinder cylinder(3.0, 7.0);
+    cylinder.calculateVolume();
+    return 0;
+}
