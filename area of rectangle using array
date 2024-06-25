@@ -1,0 +1,30 @@
+#include <iostream>
+class Rectangle {
+private:
+    double length;
+    double breadth;
+public:
+    void setDimensions(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+    double getArea() const {
+        return length * breadth;
+    }
+    void display() const {
+        std::cout << "Rectangle [Length: " << length << ", Breadth: " << breadth << ", Area: " << getArea() << "]" << std::endl;
+    }
+};
+int main() {
+    const int SIZE = 3; 
+    Rectangle rectangles[SIZE];
+    rectangles[0].setDimensions(5.0, 3.0);
+    rectangles[1].setDimensions(7.5, 4.5);
+    rectangles[2].setDimensions(6.0, 2.5);
+    for (int i = 0; i < SIZE; ++i) {
+        std::cout << "Rectangle " << i + 1 << ":\n";
+        rectangles[i].display();
+        std::cout << std::endl;
+    }
+    return 0;
+}
