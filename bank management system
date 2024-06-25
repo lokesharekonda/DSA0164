@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <string>
+class Account {
+protected:
+    std::string accountNumber;
+    double balance;
+public:
+    Account(const std::string& accNum, double initialBalance)
+        : accountNumber(accNum), balance(initialBalance) {}
+
+    virtual void display() const {
+        std::cout << "Account Number: " << accountNumber << std::endl;
+        std::cout << "Balance: $" << balance << std::endl;
+    }
+    virtual void deposit(double amount) {
+        balance += amount;
+        std::cout << "Deposited $" << amount << " into account." << std::endl;
+    }
+    virtual void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            std::cout << "Withdrawn $" << amount << " from account." << std::endl;
+        } else {
+            std::cout << "Insufficient funds!" << std::endl;
+        }
+    }
+};
+class Customer {
+protected:
+    std::string customerName;
+    std::string customerAddress;
+public:
+    Customer(const std::string& name, const std::string& address)
+        : customerName(name), customerAddress(address) {}
+    void display() const {
+        std::cout << "Customer Name: " << customerName << std::endl;
+        std::cout << "Customer Address: " << customerAddress << std::endl;
+    }
+};
+class CustomerAccount : public Account, public Customer {
+public:
+    CustomerAccount(const std::string& accNum, double initialBalance,
+                    const std::string& name, const std::string& address)
+        : Account(accNum, initialBalance), Customer(name, address) {}
+    void display() const {
+        std::cout << "Customer Account Details:" << std::endl;
+        Customer::display();  
+        std::cout << std::endl;
+        Account::display();   
+    }
+};
+int main() {
+    CustomerAccount acc1("ACC1234", 1000.0, "John Doe", "123 Main St, Anytown");
+    CustomerAccount acc2("ACC5678", 500.0, "Jane Smith", "456 Elm St, Othertown");
+    std::cout << "Account 1 Details:" << std::endl;
+    acc1.display();
+    std::cout << std::endl;
+    std::cout << "Account 2 Details:" << std::endl;
+    acc2.display();
+    std::cout << std::endl;
+    acc1.deposit(500.0);
+    acc1.withdraw(200.0);
+    std::cout << std::endl;
+    acc2.withdraw(700.0);
+    acc2.withdraw(300.0);
+    std::cout << std::endl;
+    std::cout << "Updated Account 1 Details:" << std::endl;
+    acc1.display();
+    std::cout << std::endl;
+    std::cout << "Updated Account 2 Details:" << std::endl;
+    acc2.display();
+    std::cout << std::endl;
+    return 0;
+}
