@@ -1,0 +1,7 @@
+#include <iostream>
+int main() {
+    int myVariable = 42;
+    std::cout << "Value of myVariable: " << myVariable << std::endl;
+    std::cout << "Address of myVariable: " << &myVariable << std::endl;
+    return 0;
+}
