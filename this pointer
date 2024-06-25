@@ -1,0 +1,37 @@
+#include <iostream>
+class Rectangle {
+private:
+    double length;
+    double breadth;
+public:
+    Rectangle(double length, double breadth) {
+        this->length = length;
+        this->breadth = breadth;
+    }
+    void setLength(double length) {
+        this->length = length;
+    }
+    void setBreadth(double breadth) {
+        this->breadth = breadth;
+    }
+    double getLength() const {
+        return this->length;
+    }
+    double getBreadth() const {
+        return this->breadth;
+    }
+    double getArea() const {
+        return this->length * this->breadth;
+    }
+    void display() const {
+        std::cout << "Rectangle [Length: " << this->length << ", Breadth: " << this->breadth << ", Area: " << this->getArea() << "]" << std::endl;
+    }
+};
+int main() {
+    Rectangle rect(10.0, 5.0);
+    rect.display();
+    rect.setLength(15.0);
+    rect.setBreadth(7.5);
+    rect.display();
+    return 0;
+}
