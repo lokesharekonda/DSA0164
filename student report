@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+class Student {
+protected:
+    std::string name;
+    int rollNumber;
+public:
+    Student(const std::string& studentName, int rollNum)
+        : name(studentName), rollNumber(rollNum) {}
+    void displayStudent() const {
+        std::cout << "Student Name: " << name << std::endl;
+        std::cout << "Roll Number: " << rollNumber << std::endl;
+    }
+};
+class Report : public Student {
+private:
+    int marks[5]; 
+public:
+    Report(const std::string& studentName, int rollNum, const int* marksArray)
+        : Student(studentName, rollNum) {
+        for (int i = 0; i < 5; ++i) {
+            marks[i] = marksArray[i];
+        }
+    }
+    void displayReport() const {
+        displayStudent(); 
+        std::cout << "Marks in Subjects:" << std::endl;
+        for (int i = 0; i < 5; ++i) {
+            std::cout << "Subject " << i + 1 << ": " << marks[i] << std::endl;
+        }
+        int total = 0;
+        for (int i = 0; i < 5; ++i) {
+            total += marks[i];
+        }
+        double average = static_cast<double>(total) / 5.0;
+        std::cout << "Total Marks: " << total << std::endl;
+        std::cout << "Average Marks: " << average << std::endl;
+    }
+};
+int main() {
+    int marksArray[5] = {85, 90, 78, 88, 92};
+    Report studentReport("John Doe", 101, marksArray);
+    std::cout << "Student Report:" << std::endl;
+    studentReport.displayReport();
+    return 0;
+}
