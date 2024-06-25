@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+class Employee {
+private:
+    std::string name;
+    int id;
+    double salary;
+public:
+    Employee() : name(""), id(0), salary(0.0) {}
+    void setDetails(const std::string &n, int i, double s) {
+        name = n;
+        id = i;
+        salary = s;
+    }
+    void display() const {
+        std::cout << "Employee ID: " << id << std::endl;
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Salary: $" << salary << std::endl;
+    }
+};
+int main() {
+    const int SIZE = 3; 
+    Employee employees[SIZE];
+    employees[0].setDetails("Alice Johnson", 101, 50000.0);
+    employees[1].setDetails("Bob Smith", 102, 60000.0);
+    employees[2].setDetails("Charlie Brown", 103, 70000.0);
+    for (int i = 0; i < SIZE; ++i) {
+        std::cout << "Employee " << i + 1 << " details:" << std::endl;
+        employees[i].display();
+        std::cout << std::endl;
+    }
+    return 0;
+}
