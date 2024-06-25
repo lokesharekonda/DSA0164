@@ -1,0 +1,36 @@
+#include <iostream>
+class Input {
+protected:
+    int num1;
+    int num2;
+public:
+    void setInput(int a, int b) {
+        num1 = a;
+        num2 = b;
+    }
+};
+class Addition {
+protected:
+    int result;
+public:
+    void add() {
+        result = 0; 
+    }
+};
+class Sum : public Input, public Addition {
+public:
+    void calculateSum() {
+        add(); 
+        result = num1 + num2;
+    }
+    void displaySum() {
+        std::cout << "Sum: " << result << std::endl;
+    }
+};
+int main() {
+    Sum sumObj;
+    sumObj.setInput(10, 20);
+    sumObj.calculateSum();
+    sumObj.displaySum();
+    return 0;
+}
